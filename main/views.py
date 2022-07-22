@@ -9,9 +9,10 @@ main_blueprint = Blueprint("main_blueprint", __name__, template_folder="template
 def page_index():
     return  render_template("index.html")
 
-"""функция поиска по ключевым словам"""
+
 @main_blueprint.route("/search/")
 def page_tag():
+    """функция поиска по ключевым словам"""
     search_txt = request.values.get("s")
     posts = search_posts_by_key(search_txt)
     return render_template("post_list.html", posts=posts, search_txt=search_txt)
